@@ -28,7 +28,9 @@ image: img/head.png
 
 
 ## 動機
-普段の業務でWeb開発で機械学習なんかはやってないので、可能性をひろげたい！
+普段の業務でWeb開発で機械学習なんかはやってないので、
+
+可能性をひろげたい！
 
 - Juliaでやりたい
 - JuliaTokaiでちょっとだけGen.jlの話がでたから
@@ -46,7 +48,11 @@ image: img/head.png
 
 ## 2019-07-01
 
-MIT、「Julia」上で動作する初心者向け**汎用AIプログラミングシステム**「Gen」を発表
+MIT、「Julia」上で動作する
+
+### 初心者向け**汎用AIプログラミングシステム**「Gen」
+
+を発表
 
 自動化されたAIを、
 
@@ -112,16 +118,13 @@ train_df[["Pclass", "Survived"]]
 
 ```py
 
-grid = sns.FacetGrid(train_df, \
-                     row='Embarked', \
-                     size=2.2, aspect=1.6)
-grid.map(sns.pointplot, \
-         'Pclass', 'Survived', 'Sex', palette='deep')
+grid = sns.FacetGrid(train_df, row='Embarked', size=2.2, aspect=1.6)
+grid.map(sns.pointplot, 'Pclass', 'Survived', 'Sex', palette='deep')
 grid.add_legend()
 
 ```
 
-## Juliaで前処理(データ可視化)
+## Julia
 
 ```julia
 survived_means = @linq train[:, [:Sex, :Embarked, :Survived, :Pclass]] |>
@@ -130,12 +133,9 @@ survived_means = @linq train[:, [:Sex, :Embarked, :Survived, :Pclass]] |>
                             Survived_mean = DataFrames.mean(:Survived))
 
 set_default_plot_size(20cm, 10cm)
-plot(survived_means,
-     xgroup=:Embarked,
-     x=:Pclass,
-     y=:Survived_mean,
-     color=:Sex,
-     Geom.subplot_grid(Geom.line))
+plot(survived_means, xgroup=:Embarked,
+     x=:Pclass, y=:Survived_mean,
+     color=:Sex, Geom.subplot_grid(Geom.line))
 ```
 
 ---
@@ -148,7 +148,9 @@ plot(survived_means,
 train = dataread("./dataset/titanic/train.csv")
 test  = dataread("./dataset/titanic/test.csv");
 
-# データ加工して、各列をカテゴライズ
+#
+# データ加工して、各列をカテゴライズする
+#
 
 X_train = Matrix(re_train[!, Not(:Survived)])
 Y_train = Vector(re_train[!, :Survived])
@@ -166,12 +168,14 @@ https://www.gen.dev/intro-to-modeling/Introduction%20to%20Modeling%20in%20Gen
 
 ## Tutorial: Introduction to Modeling in Gen
 
-基本ここに書いてあることをすすめていけば、(精度はどうであれ)Kaggleができる！
+基本ここに書いてあることをすすめていけば、
+
+精度はどうであれ、Kaggleができる！
 
 ---
 
 ## 2. Writing a probabilistic model as a generative function
-今回、2値の推論なので、ロジスティック回帰モデルをつかう
+2値の推論なので、ロジスティック回帰モデルをつかう
 
 ```julia
 
@@ -260,7 +264,10 @@ infer_and_predict(
 ---
 
 ## にしようかとおもったのですが 。。。。
-このままだと若干さみしいので、このオレオレチュートリアルを行っている時に、
+このままだと若干寂しいので、
+
+このオレオレチュートリアルを行っている時に、
+
 tips?(小ネタ)を見つけたので共有
 
 ---
@@ -273,7 +280,7 @@ Gadfly.jlへPRをなげてきました
 ## バグ？
 Jupyter notebookでPlotすると
 
-![bg height:80%](img/Gadfly.gif)
+![bg height:60%](img/Gadfly.gif)
 
 ---
 
@@ -282,7 +289,9 @@ Jupyter notebookでPlotすると
 こんな感じでkeymapをきれたらなあ...
 
 ```julia
+
 Gadfly.plotroot_keymap(false)
+
 ```
 
 ---
@@ -302,14 +311,18 @@ Gadfly.plotroot_keymap(false)
 前はこんなのがあったらしい。(今は消えてるらしい)
 
 ```julia
+
 set_default_plot_format(:svg)
+
 ```
 
 ---
 
 ## 理由
 
-解決はIJulia/Jupyterのときに問題を切り分けて個別に対策していくらしい
+解決はIJulia/Jupyterのときに
+
+問題を切り分けて個別に対策していくらしい
 
 ---
 
@@ -318,8 +331,10 @@ set_default_plot_format(:svg)
 以下でjavascriptを無効にできる(でも、毎回呼ぶのめんどくさい。。。)
 
 ```julia
+
 p = plot()
 draw(SVG(), p)
+
 ```
 
 ---
