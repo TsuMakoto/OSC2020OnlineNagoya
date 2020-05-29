@@ -280,7 +280,13 @@ Gadfly.jlへPRをなげてきました
 ## バグ？
 Jupyter notebookでPlotすると
 
-![bg height:60%](img/Gadfly.gif)
+セルに'-'とか'+'とか入力すると、イベントが発生。
+
+グラフのサイズがかわったりして、かなり遅くなるし
+
+なにより気持ち悪い
+
+![bg right:50% height:80%](img/Gadfly.gif)
 
 ---
 
