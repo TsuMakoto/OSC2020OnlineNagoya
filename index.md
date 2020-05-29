@@ -22,7 +22,7 @@ image: img/head.png
 - qiita: https://qiita.com/TsuMakoto
 - github: https://github.com/TsuMakoto
 
-![bg right:50% height:80%](img/49139020)
+![bg right:50% height:80%](img/fusic.png)
 
 ---
 
