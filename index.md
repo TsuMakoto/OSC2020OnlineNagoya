@@ -347,6 +347,16 @@ draw(SVG(), p)
 
 ---
 
+# 最後に
+
+Gen.jl使ってみたい人は、
+
+`docker pull tsumakoto/gen_quickstart_image`
+
+から使ってみてください。
+
+---
+
 ## ありがとうございました
 
 OSS貢献活動、Kaggle(機械学習)ともに個人的につづけていきます!!
