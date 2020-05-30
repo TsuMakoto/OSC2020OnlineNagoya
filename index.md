@@ -214,7 +214,7 @@ function do_inference(model, xs, ys, amount_of_computation)
 end
 
 # 推論を実行
-traces = [do_inference(logistic_model, X_train, Y_train, 100) for _=1:10];
+trace = do_inference(logistic_model, X_train, Y_train, 100)
 
 ```
 
@@ -236,16 +236,8 @@ function predict_new_data(model, trace, new_xs, param_addrs)
     return ys
 end
 
-function infer_and_predict(model, traces, new_xs, param_addrs)
-    pred_ys = []
-    for trace ∈ traces
-        push!(pred_ys, predict_new_data(model, trace, new_xs, param_addrs))
-    end
-    pred_ys
-end;
-
-infer_and_predict(
-    logistic_model, traces, X_test, [:intercept, :β1, :β2, :β3, :β4, :β5, :β6, :β7])
+predict_data = predict_new_data(
+  logistic_model, traces, X_test, [:intercept, :β1, :β2, :β3, :β4, :β5, :β6, :β7])
 
 ```
 
@@ -254,16 +246,14 @@ infer_and_predict(
 ## 感想
 
 - JuliaでもKaggleはできそう(Juliaカーネル復活してくれ)
-- Gen.jlは基本チュートリアルのコピペで実行までもっていけた
-- 事後確率の更新式がないので、他のチュートリアルを進める必要がありそう
+- Gen.jlは基本チュートリアルのコピペで予測までもっていけた
+- 更新式がこのチュートリアルではでてこない
+  - 他のチュートリアルを進める必要がある
 
 ---
 
-## 終わり？？
+## おまけ
 
----
-
-## にしようかとおもったのですが 。。。。
 このままだと若干寂しいので、
 
 このオレオレチュートリアルを行っている時に、
@@ -273,7 +263,8 @@ tips?(小ネタ)を見つけたので共有
 ---
 
 ## せっかくのOSSのお祭りなので
-Gadfly.jlへPRをなげてきました
+
+可視化ライブラリのGadfly.jlへPRをなげてきました
 
 ----
 
